@@ -8,6 +8,10 @@ let BookModel = Backbone.Model.extend({
 
 let BookView = Backbone.View.extend({   // CONSTRUCTOR FUNCTION - (The OBJECT that is created using)
 
+    events: {
+        
+    },
+
     initialize: function(){
         this.listenTo(this.model,"change", this.render); //your view listentTo any change happening within the model
     },
@@ -17,7 +21,15 @@ let BookView = Backbone.View.extend({   // CONSTRUCTOR FUNCTION - (The OBJECT th
         let jsonModel = this.model.toJSON()     // we use "model" in here
         this.$el.html(                          // we use "el" in here
             "<h1>" + jsonModel.title + "</h1>" +
-            "<span>"+ jsonModel.author +"</span>"
+            "<span>"+ jsonModel.author +"</span>" +
+            "<hr>" +
+            "<form>" +
+            "<label>New Title:</label>" +
+            "<input class='title-input' placeholder='new title'><br>" +
+            "<label>New Author:</label>" +
+            "<input class='title-input' placeholder='new author'><br>" +
+            "<button type='submit'>Apply changes</button>" +
+            "</form>"
             
             );
     }
